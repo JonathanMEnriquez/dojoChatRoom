@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    height: 100%;
+}
+
+ul{
+    list-style-type: none;
+    margin-top: 10px;
+    margin-left: 10%;
+    padding: 0;
+}
+
+ul li{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+#wrapper {
+    background-color: darkgray;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+#wrapper h3 {
+    margin-left: 12.5%;
+    text-decoration: underline;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+#chat {
+    background-color: white;
+    width: 75%;
+    margin-left: 12.5%;
+    border: 4px 4px;
+    border-color: black;
+    border-style: solid;
+    height: 70%;
+}
+
+#inputBox{
+    background-color: white;
+    width: 75%;
+    height: 32px;
+    margin-top: 20px;
+    margin-left: 12.5%;
+    border: 4px 4px;
+    border-color: black;
+    border-style: solid;
+    font-size: 16px;
+}
+
+#send{
+    margin-top: 20px;
+    border: 4px 4px;
+    border-color: black;
+    border-style: solid;
+    box-shadow: 1px 1px black;
+    background-color: orange;
+    width: 50px;
+    height: 28px;
+    font-size: 16px;
+    margin-left: 12.5%;
+}

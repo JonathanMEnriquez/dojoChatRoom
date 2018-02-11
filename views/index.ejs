@@ -9,7 +9,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document). ready(function() {
             var name = prompt('What is your name?');
             var id = "";
             var socket = io.connect();
@@ -17,13 +17,53 @@
 
             socket.on('user_id', function(data) {
                 id = data.id;
-                console.log(id);
+                console.log(name, id);
                 console.log('connected to chat');
+            })
+
+            socket.on('allMessages', function(data) {
+                for (message of data.messages) {
+                    var node = document.createElement("LI");
+                    var str = message.name + ":    " + message.message;
+                    var textNode = document.createTextNode(str);
+                    node.appendChild(textNode);
+                    document.getElementById('chatList').appendChild(node);
+                }
+            })
+
+            socket.on('messageAdded', function(data) {
+                console.log('new message added: ', data.message);
+                var node = document.createElement("LI");
+                // "&nbsp;"
+                var str = data.message.name + ":    " + data.message.message;
+                var textNode = document.createTextNode(str);
+                node.appendChild(textNode);
+                document.getElementById('chatList').appendChild(node);
+            })
+
+            $('#send').click(function() {
+                console.log('button pressed');
+                //if ($('#inputBox').val()) {
+                    var str = $('#inputBox').val();
+                    console.log(str);
+                    var message = {id: id, name: name, message: str}
+                    socket.emit('newMessage', {message: message});
+                    document.getElementById('inputBox').innerHTML.val = "";
+                //}
             })
         })
     </script>
 </head>
 <body>
-    
+    <div id="wrapper">
+        <h3>Conversation Board</h3>
+        <div id="chat">
+            <ul id="chatList">
+
+            </ul>
+        </div>
+        <input type="text" id="inputBox">
+        <br><button id="send">Send</button>
+    </div>
 </body>
 </html>
