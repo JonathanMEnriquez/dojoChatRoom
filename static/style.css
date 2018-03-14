@@ -40,7 +40,10 @@ ul li{
     border: 4px 4px;
     border-color: black;
     border-style: solid;
-    height: 70%;
+    border-radius: 2px;
+    height: 65%;
+    overflow: auto;
+    padding: 4vh;
 }
 
 #inputBox{
